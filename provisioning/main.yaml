@@ -12,14 +12,24 @@
       state: latest
     #Копирование файла named.zonetransfer.key на хосты с правами 0644
     #Владелец файла — root, група файла — named
+  - name: stop and disable chronyd
+    service:
+      name: chronyd
+      state: stopped
+      enabled: false
 
-- name: copy transferkey to all servers and the client
-  copy:
-    src: named.zonetransfer.key
-    dest: /etc/named.zonetransfer.key
-    owner: root
-    group: named
-    mode: 0644
+  - name: start and enable ntpd
+    service:
+      name: ntpd
+      state: started
+      enabled: true
+  - name: copy transferkey to all servers and the client
+    copy:
+      src: named.zonetransfer.key
+      dest: /etc/named.zonetransfer.key
+      owner: root
+      group: named
+      mode: 0644
 
 #Настройка хоста ns01
 - hosts: ns01
