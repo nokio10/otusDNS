@@ -51,7 +51,7 @@
       - named.d*
   #Копирование файла resolv.conf
   - name: copy resolv.conf to the servers
-    copy: 
+    templete: 
       src: servers-resolv.conf 
       dest: /etc/resolv.conf 
       owner: root 
