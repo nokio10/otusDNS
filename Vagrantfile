@@ -6,8 +6,8 @@ Vagrant.configure(2) do |config|
 
   config.vm.provision "ansible" do |ansible|
     ansible.verbose = "vvv"
-    ansible.playbook = "provisioning/playbook.yml"
-    ansible.sudo = "true"
+    ansible.playbook = "provisioning/main.yaml"
+    ansible.become = "true"
   end
 
 
