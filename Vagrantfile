@@ -12,7 +12,7 @@ Vagrant.configure(2) do |config|
 
 
   config.vm.provider "virtualbox" do |v|
-	  v.memory = 256
+	  v.memory = 1024
   end
 
   config.vm.define "ns01" do |ns01|
