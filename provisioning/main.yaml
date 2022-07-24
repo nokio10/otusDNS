@@ -42,16 +42,20 @@
   #Будут скопированы все файлы, в имя которых начинается на «named.d»
   - name: copy zones
     copy: 
-      src: {{ item }} 
+      src: "{{ item }}" 
       dest: /etc/named/ 
       owner: root 
       group: named
       mode: 0660
     with_fileglob:
-      - named.d*
+      - named.ddns.lab
+      - named.dns.lab
+      - named.dns.lab.client
+      - named.dns.lab.rev
+      - named.newdns.lab
   #Копирование файла resolv.conf
   - name: copy resolv.conf to the servers
-    templete: 
+    template: 
       src: servers-resolv.conf 
       dest: /etc/resolv.conf 
       owner: root 

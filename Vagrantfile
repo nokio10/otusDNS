@@ -2,15 +2,12 @@
 # vi: set ft=ruby :
 
 Vagrant.configure(2) do |config|
-  config.vm.box = "centos/7"
-
+  config.vm.box = "centos7"
   config.vm.provision "ansible" do |ansible|
-    ansible.verbose = "vvv"
+    ansible.verbose = "v"
     ansible.playbook = "provisioning/main.yaml"
     ansible.become = "true"
   end
-
-
   config.vm.provider "virtualbox" do |v|
 	  v.memory = 1024
   end
